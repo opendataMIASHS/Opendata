@@ -1,5 +1,6 @@
 // dépendance api express
 let express = require('express');
+var fs = require("fs");
 
 const app = express();
 
