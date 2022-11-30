@@ -16,6 +16,38 @@ var server = app.listen(process.env.PORT || 3000, function () {
   console.log('App listening at http://%s:%s', host, port)
 })
 
+// functions
+
+function saveCom(content,target){
+    let openFile = fs.readFileSync('Data/dbCom.json')
+    let dbCom = JSON.parse(openFile)
+
+    dbCom[target].push(content)
+
+    dbComStr = JSON.stringify(dbCom)
+    
+    fs.writeFile("Data/dbCom.json", dbComStr, function(err) {
+        if (err) {
+            console.log(err)
+        }
+    })
+
+}
+
+function retrieveCom(target){
+    let openFile = fs.readFileSync('Data/dbCom.json')
+    let dbCom = JSON.parse(openFile)
+
+    return dbCom[target]
+
+}
+
+function retriveMarks(target){
+    let openFile = fs.readFileSync('Data/marks.json')
+    let marks = JSON.parse(openFile)
+
+    return marks[target]
+}
 
 
 
@@ -45,12 +77,21 @@ app.get('/result', function(request, response) {
 //le formulaire pointe en sortie vers la méthode post ci-après, permettant de récupérer la note saisie
 app.post('/post', function(request, response) {
   const body = request.body;
-  let rg1 = body.rg1; //string type
-  let commune = body.nomCommune2; //string type
+  let note = body.note; //string type
+  let commune = body.nomCommune; //string type
+  let codeCP = body.codeCP; // string type
+
+  saveCom(note,commune);
+  lst_com = retrieveCom(commune);
+  lst_marks = retriveMarks(commune);
+  //sumCom = sumCom(lst_com);
 
 
-  /* fonction Théo */
-    response.send(rg1+' '+commune);
+
+
+
+
+  response.send(lst_com+' '+lst_marks);
 
 
 
