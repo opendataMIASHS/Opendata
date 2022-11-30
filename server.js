@@ -7,6 +7,18 @@ let bodyParser = require("body-parser");
 
 var PORT = 3000;
 
+app.set("view engine", "ejs");
+
+
+
+
+app.get('/', function(request, response){
+    response.render("../Resultat.ejs", {
+    a: 30,
+    b: 86
+});
+  });
+
 // serveur html
 
 
