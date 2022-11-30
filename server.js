@@ -51,7 +51,9 @@ app.post('/post', function(request, response) {
 
   /* fonction Théo */
 
+  alert(commune);
+
   console.log("note = " + rg1);
-    console.log("note = " + commune);
+  console.log("note = " + commune);
 
 });

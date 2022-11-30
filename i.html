@@ -10,11 +10,23 @@
 	</head>
 	<body>
 		<div class="container">
-			<form action="i.html" method="get" id="commune" autocomplete="off">
+			<form action="i.html" method="post" id="commune" autocomplete="off">
 				<h1>Note ma ville</h1>
 				<div class="autocomplete">
 					<label for="nomCommune">Commune :</label>
 					<input type="text" id="nomCommune" name="nomCommune" placeholder="Paris, Lyon, Chateauneuf,..." />
+					 <div class="wrapper">
+				  <input type="button" id="r1" name="rg2" value="5">
+				  <label for="r1">&#10038;</label>
+				  <input type="radio" id="r2" name="rg2" value="4">
+				  <label for="r2">&#10038;</label>
+				  <input type="radio" id="r3" name="rg2" value="3">
+				  <label for="r3">&#10038;</label>
+				  <input type="radio" id="r4" name="rg2" value="2">
+				  <label for="r4">&#10038;</label>
+				  <input type="radio" id="r5" name="rg2" value="1">
+				  <label for="r5">&#10038;</label>
+				</div>
 					<small></small>
 				</div>
 				<button type="submit" class="full">Rechercher</button>
@@ -79,7 +91,7 @@
 				</div>
 
 				<label for="nomCommune">Commune :</label>
-					<input type="text" id="nomCommune" name="nomCommune2" placeholder="Paris, Lyon, Chateauneuf,..." />
+					<input type="text" id="nomCommune2" name="nomCommune2" placeholder="Paris, Lyon, Chateauneuf,..." />
 
 				    <input type="submit" value="post">
 
@@ -217,6 +229,8 @@
 		ville=ville.sort();
 		/*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
 		autocomplete(document.getElementById("nomCommune"), ville);
+		autocomplete(document.getElementById("nomCommune2"), ville);
+
 
 
 		</script>
