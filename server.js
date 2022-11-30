@@ -12,7 +12,9 @@ app.set("view engine", "ejs");
 
 
 
-app.get('/', function(request, response){
+app.get('/test/:commune', function(request, response){
+        console.log(request);
+
     response.render("../Resultat.ejs", {
     a: 30,
     b: 86
@@ -62,8 +64,7 @@ app.post('/post', function(request, response) {
 
 
   /* fonction Théo */
-    response.send(rg1+' '+commune);
-
+  response.redirect(`/test/`+commune);
 
 
 });
