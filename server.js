@@ -81,18 +81,23 @@ app.post('/post', function(request, response) {
   let note = body.note; //string type
   let commune = body.nomCommune; //string type
   let codeCP = body.codeCP; // string type
+  console.log(note);
+  console.log(commune);
+  console.log(codeCP);
 
   saveCom(note,commune);
   lst_com = retrieveCom(commune);
   lst_marks = retriveMarks(commune);
   //sumCom = sumCom(lst_com);
+  console.log(lst_com)
+  console.log(lst_marks)
 
 
 
 
 
 
-  response.send(lst_com+' '+lst_marks);
+  response.send('hello');
 
 
 
