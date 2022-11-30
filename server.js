@@ -44,10 +44,17 @@ function retrieveCom(target){
 }
 
 function retriveMarks(target){
-    let openFile = fs.readFileSync('Data/marks.json')
-    let marks = JSON.parse(openFile)
+  let openFile = fs.readFileSync('Data/marks.json')
+  let marks = JSON.parse(openFile)
+  res = 0;
+  marks.forEach(x=>{
+      tmp = x.nomCommune
+      if(tmp==target){
+          res = x
+      }
+  })
 
-    return marks[target]
+  return res
 }
 
 
@@ -81,23 +88,23 @@ app.post('/post', function(request, response) {
   let note = body.note; //string type
   let commune = body.nomCommune; //string type
   let codeCP = body.codeCP; // string type
-  console.log(note);
-  console.log(commune);
-  console.log(codeCP);
+  //console.log(note);
+  //console.log(commune);
+  //console.log(codeCP);
 
   saveCom(note,commune);
   lst_com = retrieveCom(commune);
   lst_marks = retriveMarks(commune);
   //sumCom = sumCom(lst_com);
-  console.log(lst_com)
-  console.log(lst_marks)
+  //console.log(lst_com)
+  //console.log(lst_marks)
 
 
 
 
 
 
-  response.send('hello');
+  response.send(lst_marks);
 
 
 
