@@ -29,7 +29,7 @@ app.get('/note', function(request, response) {
 });
 
 app.get('/celia', function(request, response) {
-  response.sendFile( __dirname  + '/i.html');
+  response.sendFile( __dirname  + '/index.html');
 });
 
 
@@ -46,7 +46,7 @@ app.get('/result', function(request, response) {
 app.post('/post', function(request, response) {
   const body = request.body;
   let rg1 = body.rg1; //string type
-    let commune = body.nomCommune2; //string type
+  let commune = body.nomCommune2; //string type
 
 
   /* fonction Théo */
