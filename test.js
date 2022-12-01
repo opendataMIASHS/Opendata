@@ -145,44 +145,46 @@ console.log('Start')
 
 createdB()
 
-function saveCom(content,target){
-    let openFile = fs.readFileSync('Data/dbCom.json')
-    console.log(openFile)
-    let dbCom = JSON.parse(openFile)
-    console.log(dbCom)
+// function saveCom(content,target){
+//     let openFile = fs.readFileSync('Data/dbCom.json')
+//     console.log(openFile)
+//     let dbCom = JSON.parse(openFile)
+//     console.log(dbCom)
 
-    dbCom[target].push(content)
+//     dbCom[target].push(content)
 
-    dbComStr = JSON.stringify(dbCom)
+//     dbComStr = JSON.stringify(dbCom)
     
-    fs.writeFile("Data/dbCom.json", dbComStr, function(err) {
-        if (err) {
-            console.log(err)
-        }
-    })
+//     fs.writeFile("Data/dbCom.json", dbComStr, function(err) {
+//         if (err) {
+//             console.log(err)
+//         }
+//     })
 
-}
+//     return target
 
-saveCom('test','MONTPELLIER')
+// }
+
+// saveCom('test','MONTPELLIER');
 
 
-function retrieveCom(target){
-    let openFile = fs.readFileSync('Data/dbCom.json')
-    let dbCom = JSON.parse(openFile)
+// function retrieveCom(target){
+//     let openFile = fs.readFileSync('Data/dbCom.json')
+//     let dbCom = JSON.parse(openFile)
 
-    let dbComStr = JSON.stringify(dbCom)
+//     let dbComStr = JSON.stringify(dbCom)
 
-    fs.writeFile("Data/dbCom.json", dbComStr, function(err) {
-        if (err) {
-            console.log(err)
-        }
-    })
+//     fs.writeFile("Data/dbCom.json", dbComStr, function(err) {
+//         if (err) {
+//             console.log(err)
+//         }
+//     })
 
-    return dbCom[target]
+//     return dbCom[target]
 
-}
+// }
 
-console.log(retrieveCom('MONTPELLIER'))
+// console.log(retrieveCom('MONTPELLIER'))
 
 
 // function retriveMarks(target){
@@ -217,3 +219,24 @@ console.log(retrieveCom('MONTPELLIER'))
 
 // }
 
+// function saveComAndRetrieve(content,target){
+//     let openFile = fs.readFileSync('Data/dbCom.json')
+    
+//     let dbCom = JSON.parse(openFile)
+    
+
+//     dbCom[target].push(content)
+
+//     dbComStr = JSON.stringify(dbCom)
+    
+//     fs.writeFile("Data/dbCom.json", dbComStr, function(err) {
+//         if (err) {
+//             console.log(err)
+//         }
+//     })
+
+//     return dbCom[target]
+
+// }
+
+// console.log(saveComAndRetrieve('test','MONTPELLIER'))
