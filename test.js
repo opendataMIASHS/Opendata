@@ -114,77 +114,60 @@ var fs = require('fs')
 
 //mergeJson()
 
-function createdB(){
-    let openFranceJson = fs.readFileSync('Data/france.json')
-    let franceJson = JSON.parse(openFranceJson)
+// function createdB(){
+//     let openFranceJson = fs.readFileSync('Data/france.json')
+//     let franceJson = JSON.parse(openFranceJson)
 
-    res = new Object()
-    //console.log(res)
-    franceJson.forEach(x=>{
-            //console.log(x.Nom_commune)
-            res[x.Nom_commune] = []
-            //console.log(res)
-        }
-    )
+//     res = new Object()
+//     //console.log(res)
+//     franceJson.forEach(x=>{
+//             //console.log(x.Nom_commune)
+//             res[x.Nom_commune] = []
+//             //console.log(res)
+//         }
+//     )
 
-    //console.log(res)
+//     //console.log(res)
 
-    resStr = JSON.stringify(res)
+//     resStr = JSON.stringify(res)
 
-    //console.log(resStr)
+//     //console.log(resStr)
     
-    fs.writeFile("Data/dbCom.json", resStr, function(err) {
-        if (err) {
-            console.log(err)
-        }
-    })
+//     fs.writeFileSync("Data/dbCom.json", resStr)
+
+// }
+
+// console.log('Start')
+
+// createdB()
+
+function saveCom(content,target){
+    let openFile = fs.readFileSync('Data/dbCom.json')
+    let dbCom = JSON.parse(openFile)
+    dbCom[target].push(content)
+    dbComStr = JSON.stringify(dbCom)
+    
+    fs.writeFileSync("Data/dbCom.json", dbComStr)
+
 
 }
 
-console.log('Start')
-
-createdB()
-
-// function saveCom(content,target){
-//     let openFile = fs.readFileSync('Data/dbCom.json')
-//     console.log(openFile)
-//     let dbCom = JSON.parse(openFile)
-//     console.log(dbCom)
-
-//     dbCom[target].push(content)
-
-//     dbComStr = JSON.stringify(dbCom)
-    
-//     fs.writeFile("Data/dbCom.json", dbComStr, function(err) {
-//         if (err) {
-//             console.log(err)
-//         }
-//     })
-
-//     return target
-
-// }
-
-// saveCom('test','MONTPELLIER');
+saveCom('test','MONTPELLIER');
 
 
-// function retrieveCom(target){
-//     let openFile = fs.readFileSync('Data/dbCom.json')
-//     let dbCom = JSON.parse(openFile)
+function retrieveCom(target){
+    let openFile = fs.readFileSync('Data/dbCom.json')
+    let dbCom = JSON.parse(openFile)
 
-//     let dbComStr = JSON.stringify(dbCom)
+    let dbComStr = JSON.stringify(dbCom)
 
-//     fs.writeFile("Data/dbCom.json", dbComStr, function(err) {
-//         if (err) {
-//             console.log(err)
-//         }
-//     })
+    fs.writeFileSync("Data/dbCom.json", dbComStr)
 
-//     return dbCom[target]
+    return dbCom[target]
 
-// }
+}
 
-// console.log(retrieveCom('MONTPELLIER'))
+console.log(retrieveCom('MONTPELLIER'))
 
 
 // function retriveMarks(target){
