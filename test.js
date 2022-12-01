@@ -3,113 +3,113 @@ var fs = require('fs')
 
 
 
-function searchOneBio(nomVille,file){
-    let openFile = fs.readFileSync(file)
-    let bioScore = JSON.parse(openFile)
+// function searchOneBio(nomVille,file){
+//     let openFile = fs.readFileSync(file)
+//     let bioScore = JSON.parse(openFile)
 
-    let res = []
-    bioScore.forEach(x => {
-        if (x.libellecommune == nomVille){
-            res.push(x.scoreBio)
-        }
-    })
+//     let res = []
+//     bioScore.forEach(x => {
+//         if (x.libellecommune == nomVille){
+//             res.push(x.scoreBio)
+//         }
+//     })
 
-    return res.reduce((partialSum, a) => partialSum + a, 0)
+//     return res.reduce((partialSum, a) => partialSum + a, 0)
 
-}
+// }
 
 //console.log(searchOneBio('ARANDAS','Data/bioScore.json'))
 
 
-function mergeJson(){
-    let openFranceJson = fs.readFileSync('Data/france.json')
-    let franceJson = JSON.parse(openFranceJson)
+// function mergeJson(){
+//     let openFranceJson = fs.readFileSync('Data/france.json')
+//     let franceJson = JSON.parse(openFranceJson)
 
-    let res = []
-    franceJson.forEach(x=> {
-        let tmp = new Object()
-        tmp.codeCommune = x.Code_commune_INSEE
-        tmp.nomCommune  = x.Nom_commune
-        res.push(tmp)
-    })
-
-
-    let openInternetJson = fs.readFileSync('Data/internet.json')
-    let internetJson = JSON.parse(openInternetJson)
-
-    //console.log(internetJson)
-
-    internetJson.forEach(x=>{
-        tmp = x.Code_INSEE
-        res.forEach(y=>{
-            if (tmp==y.codeCommune){
-                y['scoreInternet'] = x.Score_Internet
-            }
-
-        })
-    })
+//     let res = []
+//     franceJson.forEach(x=> {
+//         let tmp = new Object()
+//         tmp.codeCommune = x.Code_commune_INSEE
+//         tmp.nomCommune  = x.Nom_commune
+//         res.push(tmp)
+//     })
 
 
-    let openBBJson = fs.readFileSync('Resultats.json')
-    let bBJson = JSON.parse(openBBJson)
+//     let openInternetJson = fs.readFileSync('Data/internet.json')
+//     let internetJson = JSON.parse(openInternetJson)
 
-    console.log(bBJson)
+//     //console.log(internetJson)
 
-    bBJson.forEach(x=>{
-        tmp = x.commune
-        res.forEach(y=>{
-            if(tmp==y.codeCommune){
-                console.log('toto')
-                y['scoreBB'] = x.Score
-                console.log(y['scoreBB'])
-            }
-        })
-    })
+//     internetJson.forEach(x=>{
+//         tmp = x.Code_INSEE
+//         res.forEach(y=>{
+//             if (tmp==y.codeCommune){
+//                 y['scoreInternet'] = x.Score_Internet
+//             }
 
-    //console.log(res)
+//         })
+//     })
 
 
-    let openBioJson = fs.readFileSync('Data/bioScore.json')
-    let bioJson = JSON.parse(openBioJson)
+//     let openBBJson = fs.readFileSync('Resultats.json')
+//     let bBJson = JSON.parse(openBBJson)
 
-    bioJson.forEach(x=>{
-        tmp = x.codecommune
-        res.forEach(y=>{
-            if(tmp==y.codeCommune){
-                y['scoreBio'] = x.scoreBio
-            }
-        })
-    })
+//     console.log(bBJson)
 
+//     bBJson.forEach(x=>{
+//         tmp = x.commune
+//         res.forEach(y=>{
+//             if(tmp==y.codeCommune){
+//                 console.log('toto')
+//                 y['scoreBB'] = x.Score
+//                 console.log(y['scoreBB'])
+//             }
+//         })
+//     })
 
-    let openGazJson = fs.readFileSync('Scripts/gaz_elec_final.json')
-    let gazJson = JSON.parse(openGazJson)
-
-    gazJson.forEach(x=>{
-        tmp = x.commune
-        res.forEach(y=>{
-            if(tmp==y.codeCommune){
-                y['scoreGaz'] = x.indice_gaz
-            }
-        })
-    })
+//     //console.log(res)
 
 
+//     let openBioJson = fs.readFileSync('Data/bioScore.json')
+//     let bioJson = JSON.parse(openBioJson)
+
+//     bioJson.forEach(x=>{
+//         tmp = x.codecommune
+//         res.forEach(y=>{
+//             if(tmp==y.codeCommune){
+//                 y['scoreBio'] = x.scoreBio
+//             }
+//         })
+//     })
+
+
+//     let openGazJson = fs.readFileSync('Scripts/gaz_elec_final.json')
+//     let gazJson = JSON.parse(openGazJson)
+
+//     gazJson.forEach(x=>{
+//         tmp = x.commune
+//         res.forEach(y=>{
+//             if(tmp==y.codeCommune){
+//                 y['scoreGaz'] = x.indice_gaz
+//             }
+//         })
+//     })
 
 
 
-    var dataTest = mergeJson()
-
-    var data = JSON.stringify(dataTest)
 
 
-    fs.writeFile("Data/test.json", data, function(err) {
-        if (err) {
-            console.log(err)
-        }
-    })
+//     var dataTest = mergeJson()
 
-}
+//     var data = JSON.stringify(dataTest)
+
+
+//     fs.writeFile("Data/test.json", data, function(err) {
+//         if (err) {
+//             console.log(err)
+//         }
+//     })
+
+// }
 
 
 //mergeJson()
@@ -131,7 +131,7 @@ function createdB(){
 
     resStr = JSON.stringify(res)
 
-    console.log(resStr)
+    //console.log(resStr)
     
     fs.writeFile("Data/dbCom.json", resStr, function(err) {
         if (err) {
@@ -141,13 +141,15 @@ function createdB(){
 
 }
 
-//console.log('Start')
+console.log('Start')
 
-//createdB()
+createdB()
 
 function saveCom(content,target){
     let openFile = fs.readFileSync('Data/dbCom.json')
+    console.log(openFile)
     let dbCom = JSON.parse(openFile)
+    console.log(dbCom)
 
     dbCom[target].push(content)
 
@@ -161,33 +163,41 @@ function saveCom(content,target){
 
 }
 
-//saveCom('test','CUCUGNAN')
+saveCom('test','MONTPELLIER')
 
 
 function retrieveCom(target){
     let openFile = fs.readFileSync('Data/dbCom.json')
     let dbCom = JSON.parse(openFile)
 
+    let dbComStr = JSON.stringify(dbCom)
+
+    fs.writeFile("Data/dbCom.json", dbComStr, function(err) {
+        if (err) {
+            console.log(err)
+        }
+    })
+
     return dbCom[target]
 
 }
 
-//console.log(retrieveCom('CUCUGNAN'))
+console.log(retrieveCom('MONTPELLIER'))
 
 
-function retriveMarks(target){
-    let openFile = fs.readFileSync('Data/marks.json')
-    let marks = JSON.parse(openFile)
-    res = 0;
-    marks.forEach(x=>{
-        tmp = x.nomCommune
-        if(tmp==target){
-            res = x
-        }
-    })
+// function retriveMarks(target){
+//     let openFile = fs.readFileSync('Data/marks.json')
+//     let marks = JSON.parse(openFile)
+//     res = 0;
+//     marks.forEach(x=>{
+//         tmp = x.nomCommune
+//         if(tmp==target){
+//             res = x
+//         }
+//     })
 
-    return res
-}
+//     return res
+// }
 
     
 
@@ -197,14 +207,13 @@ function retriveMarks(target){
 // console.log(retriveMarks('MONTPELLIER'))
 
 
-function retrieveCom(target){
-    console.log(target)
-    let openFile = fs.readFileSync('Data/dbCom.json')
-    console.log(openFile)
-    let dbCom = JSON.parse(openFile)
+// function retrieveCom(target){
+//     console.log(target)
+//     let openFile = fs.readFileSync('Data/dbCom.json')
+//     console.log(openFile)
+//     let dbCom = JSON.parse(openFile)
 
-    return dbCom[target]
+//     return dbCom[target]
 
-}
+// }
 
-console.log(retrieveCom('MONTPELLIER'))

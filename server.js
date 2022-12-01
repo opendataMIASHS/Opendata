@@ -20,32 +20,46 @@ var server = app.listen(process.env.PORT || 3000, function () {
 // functions
 
 function saveCom(content,target){
+	  console.log(content);
+	  console.log(target);
     let openFile = fs.readFileSync('Data/dbCom.json')
+    console.log(openFile);
     let dbCom = JSON.parse(openFile)
+    //console.log(dbCom);
 
-    dbCom[target].push(content)
+    if (target in dbCom.keys()){
+      dbCom[target].push(content)
+    }
+    
+    console.log(dbCom[0])
 
     dbComStr = JSON.stringify(dbCom)
-    
-    fs.writeFile("Data/dbCom.json", dbComStr, function(err) {
-        if (err) {
-            console.log(err)
-        }
-    })
 
-    return target
+    console.log(dbComStr);
+
+    
+    
+    fs.writeFile("Data/dbCom.json", 'toto', function(err) {
+      if (err) throw err;
+      console.log('Data written to file');
+    })
 
 }
 
 function retrieveCom(target){
-    console.log(target)
+	  console.log(target);
     let openFile = fs.readFileSync('Data/dbCom.json')
-    console.log(openFile)
+    //console.log("ici");
     let dbCom = JSON.parse(openFile)
+    //console.log("dss",dbCom[target]);
+    //console.log("dss",dbCom);
+
 
     return dbCom[target]
 
 }
+
+
 
 function retriveMarks(target){
   let openFile = fs.readFileSync('Data/marks.json')
@@ -92,28 +106,31 @@ app.post('/post', function(request, response) {
   let note = body.note; //string type
   let commune = body.nomCommune; //string type
   let codeCP = body.codeCP; // string type
-  //console.log(note);
-  //console.log(commune);
-  //console.log(codeCP);
-  const promiseCom = new Promise((resolve, reject) => {
-    saveCom(note,commune);
-  });
-  //promiseCom.then(retrieveCom(commune));
-  lst = retrieveCom(commune);
-  console.log(lst)
-  
- 
-  const promiseMarks = new Promise((resolve, reject) => {
-    retriveMarks(commune);
-  });
-  
+
+
+  //let promiseCom = saveCom(note,commune).then(retrieveCom(commune));
+  //let promiseMarks = retriveMarks(commune);
   //sumCom = sumCom(lst_com);
+  const p1= new Promise(function(resolve, reject) { 
+  	saveCom(note,commune);
+  	a=retrieveCom(commune);
+  	resolve(a);
+  	            
+
+  });
+
+  const p2= new Promise(function(resolve, reject) { 
+  	b=retriveMarks(commune);
+  	resolve(b);
+  	            
+
+  });
   //console.log(lst_com)
   //console.log(lst_marks)
 
 
 
-  Promise.all([promiseCom, promiseMarks]).then(function(values){
+  Promise.all([p1, p2]).then(function(values){
     response.send(value[0],value[1]);
   });
 
