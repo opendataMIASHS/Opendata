@@ -3,37 +3,74 @@
 	<head>
 		<meta charset="utf-8">
 		<title>API Note par ville</title>
-		<link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="/public/style.css" />
 		<!-- #<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>-->
 		<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="css/style.css" /> -->
 		<!-- <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1264.0.min.js"></script>-->
 	</head>
+<!-- ------------------------------------------------------------------------------------------>
+
+
 	<body>
+		<div class="topnav">
+		  <br>
+			<br>
+		</div>
+
+		</div>
+		<header>
+			<img class="im1" alt="peluche" src="../public/paris.png"/>
+			<img class="im3" alt="peluche" src="/public/france.png"/>
+			<img class="im2" alt="peluche" src="/public/kid.png"/>
+				<h1>Note ma ville</h1>
+				<h2>Renseigne-toi sur ta ville préférée<br>
+				Et surtout note-la !</h2>
+		</header>
+
+
+		<div class="navbar">
+			 <br>
+			 <br>
+		</div>
+
+		<section>
+<!--------------------------------------------------------------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------------------------------------------------------------->
+
+
+<!--------------------------------------------------------------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------------------------------------------------------------->
+		<div class="rectangleAcc">
 		<div class="container">
 			<form action="/post" method="post" id="commune" autocomplete="off">
-				<h1>Note ma ville</h1>
+				<h2>RECHERCHE</h2>
+				<article>
 				<div class="divCom">
 					<label for="nomCommune">Commune :</label>
 					<input type="text" id="nomCommune" name="nomCommune" placeholder="Paris, Lyon, Chateauneuf,..." />
-					<small></small>
+
 				</div>
+				</article>
 				<div class="divCP">
 					<label for="codeCP">Code postal :</label>
 					<input type="text" id="codeCP" name="codeCP" placeholder="75000, 69000, 26780,..." />
 					<small></small>
 				</div>
 				<div class="divNote">
-					<label for="labNote">Note cette ville sur 10, 10 pour une très bonne note, 0 si tu détestes :</label>
+					<label for="labNote">Note cette ville sur 10:</label>
 					<input type="text" id="note" name="note" placeholder="7" />
 					<small></small>
 				</div>
-				<button type="submit" class="full">Envoyer</button>
+				<p>La note de 10 correspond à une très bonne note. A l'inverse, met un 0 si tu détestes cette ville !</p>
+				<button type="submit" class="full">ENVOYER</button>
 			</form>
 		</div>
-
+		</div>
+		<a href="/api-docs">Documentation</a>
+		</section>
 		<footer>
-				<p><br/>Réalisé avec amour par la team : Clément GENAY aka Clem, Clémence CORE aka Clem, Robin BIAGIONI aka Robinou, Théodore MICHEL-PICQUE aka Titou et Célia TEYSSIER aka Céliou.<br/>
+				<p><br><br>Réalisé avec amour par la team : Clément GENAY aka Clem, Clémence CORE aka Clem, Robin BIAGIONI aka Robinou, Théodore MICHEL-PICQUE aka Titou et Célia TEYSSIER aka Céliou.<br/>
 				<!-- <a href="#">Nous contacter !</a></p> -->
 		</footer>
 

@@ -1,0 +1,198 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0", 
+      "title": "Open Data",
+      "description": "API pour obtenir des informations sur sa commune",
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "host": "localhost:3000",
+    "basePath": "http://localhost:3000",
+    "tags": [
+      {
+        "name": "Users",
+        "description": "API for users in the system"
+      }
+    ],
+    "schemes": ["http"],
+    "consumes": ["data.csv"],
+    "produces": ["datajson.json"],
+   
+    "paths": {
+      "/getAll": {
+        "get": {
+          "tags": ["Download the data"],
+          "summary": "Download all the data for every cities",
+          "responses": {
+            "200": {
+              "description": "Download json file afor all of the french cities",
+              "schema": {
+                "$ref": "#/definitions/getAll"
+              }
+            }
+          }
+        }
+      },
+      "/Resultats/:commune/:CP": {
+        "get": {
+          "tags": ["Get API Result"],
+          "summary": "Display our API result for one city",
+          "responses": {
+            "200": {
+              "description": "Display our API result for one city filter by city name and code postal",
+              "schema": {
+                "$ref": "#/definitions/getResult"
+              }
+            }
+          }
+        }
+      },
+      "/get/:nomCommune": {
+        "get": {
+          "tags": ["Download the data"],
+          "parameters": [
+          {
+            "name": "nomCommune",
+            "in": "body",
+            "description": "Name of the city",
+            "schema": {
+              "$ref": "#/get/nomVille"
+            }
+          }
+        ],
+          "summary": "Get the data for only one city name",
+          "responses": {
+            "200": {
+              "description": "Download json file afor all of the french cities",
+              "schema": {
+                "$ref": "#/definitions/getCity"
+              }
+            }
+          }
+        }
+    }
+
+    
+
+
+    },
+
+
+      
+      "definitions": {
+        "getAll": {
+          "required": ["id", "codeCommune", "nomCommune","scoreInternet","scoreGaz","scoreBB","scoreBio"],
+
+          "properties": {
+            "id": {
+              "type": "integer",
+               
+               "exemple": 500,
+              "uniqueItems": true
+            },
+            "codeCommune": {
+              "type": "number"
+            },
+            "nomCommune": {
+              "type": "string"
+            },
+            "scoreInternet": {
+              "type": "number"
+            },
+            "scoreGaz": {
+              "type": "number"
+            },
+            "scoreBB": {
+              "type": "number"
+            },
+            "scoreBio": {
+              "type": "number"
+            } 
+
+          }
+        },
+        "getAll": {
+          "required": ["codeCommune", "nomCommune"],
+
+          "properties": {
+            "id": {
+              "type": "integer",
+               
+               "exemple": 500,
+              "uniqueItems": true
+            },
+            "codeCommune": {
+              "type": "number"
+            },
+            "nomCommune": {
+              "type": "string"
+            },
+            "scoreInternet": {
+              "type": "number"
+            },
+            "scoreGaz": {
+              "type": "number"
+            },
+            "scoreBB": {
+              "type": "number"
+            },
+            "scoreBio": {
+              "type": "number"
+            } 
+
+          }
+        },
+        "getCity": {
+          "required": ["id", "codeCommune", "nomCommune","scoreInternet","scoreGaz","scoreBB","scoreBio"],
+
+          "properties": {
+            "id": {
+              "type": "integer",
+               
+               "exemple": 500,
+              "uniqueItems": true
+            },
+            "codeCommune": {
+              "type": "number"
+            },
+            "nomCommune": {
+              "type": "string"
+            },
+            "scoreInternet": {
+              "type": "number"
+            },
+            "scoreGaz": {
+              "type": "number"
+            },
+            "scoreBB": {
+              "type": "number"
+            },
+            "scoreBio": {
+              "type": "number"
+            } 
+
+          }
+        }
+        
+
+
+
+      }
+        
+      
+    
+}
+   
+  
+  
+      
+    
+  
+
+
+
+
+  

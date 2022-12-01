@@ -14,7 +14,10 @@ app.set("view engine", "ejs");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-var array=require("array");
+const swaggerUi = require('swagger-ui-express'),
+    swaggerDocument = require('./swagger.json');
+
+
 
 
 var server = app.listen(process.env.PORT || 3000, function () {
@@ -43,6 +46,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', function(request, response) {
   response.sendFile( __dirname  + '/index.html');
+  //response.render("../index.html");
 });
 
 
@@ -85,3 +89,10 @@ var bio=filtered[0]['scoreBio'];
     
 });
   });
+
+
+app.use(
+    '/api-docs',
+    swaggerUi.serve, 
+    swaggerUi.setup(swaggerDocument)
+  );
