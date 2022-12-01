@@ -33,10 +33,14 @@ function saveCom(content,target){
         }
     })
 
+    return target
+
 }
 
 function retrieveCom(target){
+    console.log(target)
     let openFile = fs.readFileSync('Data/dbCom.json')
+    console.log(openFile)
     let dbCom = JSON.parse(openFile)
 
     return dbCom[target]
@@ -91,9 +95,18 @@ app.post('/post', function(request, response) {
   //console.log(note);
   //console.log(commune);
   //console.log(codeCP);
-
-  let promiseCom = saveCom(note,commune).then(retrieveCom(commune));
-  let promiseMarks = retriveMarks(commune);
+  const promiseCom = new Promise((resolve, reject) => {
+    saveCom(note,commune);
+  });
+  //promiseCom.then(retrieveCom(commune));
+  lst = retrieveCom(commune);
+  console.log(lst)
+  
+ 
+  const promiseMarks = new Promise((resolve, reject) => {
+    retriveMarks(commune);
+  });
+  
   //sumCom = sumCom(lst_com);
   //console.log(lst_com)
   //console.log(lst_marks)
