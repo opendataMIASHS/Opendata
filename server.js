@@ -92,19 +92,17 @@ app.post('/post', function(request, response) {
   //console.log(commune);
   //console.log(codeCP);
 
-  saveCom(note,commune);
-  lst_com = retrieveCom(commune);
-  lst_marks = retriveMarks(commune);
+  let promiseCom = saveCom(note,commune).then(retrieveCom(commune));
+  let promiseMarks = retriveMarks(commune);
   //sumCom = sumCom(lst_com);
   //console.log(lst_com)
   //console.log(lst_marks)
 
 
 
-
-
-
-  response.send(lst_marks);
+  Promise.all([promiseCom, promiseMarks]).then(function(values){
+    response.send(value[0],value[1]);
+  });
 
 
 
