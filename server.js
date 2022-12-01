@@ -17,7 +17,9 @@ function saveCom(content,target){
   let openFile = fs.readFileSync('Data/dbCom.json')
   let dbCom = JSON.parse(openFile)
 
-  dbCom[target].push(content)
+  if (target in dbCom.keys()){
+    dbCom[target].push(content)
+  }
 
   dbComStr = JSON.stringify(dbCom)
   
