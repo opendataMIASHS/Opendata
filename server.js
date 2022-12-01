@@ -189,7 +189,16 @@ app.get('/dlBio', function(request,response){
   })
 })
 
-app.get('/dl')
+app.get('/dlInternet', function(request,response){
+  download('https://www.data.gouv.fr/fr/datasets/r/53d07e64-cda2-4c44-aea1-390a51e0e953', 'Data/internet.xlsx', (err) => {
+    if (err) {
+        console.error(err);
+        return;
+    }
+
+    console.log('Téléchargement des données Internet terminé !');
+})
+})
 
 
 
@@ -202,7 +211,7 @@ app.post('/post', function(request, response) {
 
   saveCom(note,commune);
 
-   response.redirect('/Resultats/'+commune+'/'+codeCP);
+  response.redirect('/Resultats/'+commune+'/'+codeCP);
 
 });
 
