@@ -48,7 +48,9 @@ Durant le projet, nous avons été contraints de migrer vers un second repo git 
 ## Incompatibilités Scalingo
 
 Des alert() indiquant une mauvaise saisie (champ vide par ex) dans le formulaire fonctionnent en local, mais pas sur Scalingo, sans que nous ayons pu comprendre l’origine de l’incompatibilité.
-Alors qu’une auto-complétion complétant le nom de ville et son code postal fonctionne en local à partir d’un début de saisie, il a été impossible de la rendre fonctionnelle sur l’app Scalingo…, sans savoir pourquoi ? On soupçonne l'origine du problème, cf image. ![](https://www.geeksleague.be/wp-content/uploads/2010/05/PEBKAC-Preview.png =250x250)
+Alors qu’une auto-complétion complétant le nom de ville et son code postal fonctionne en local à partir d’un début de saisie, il a été impossible de la rendre fonctionnelle sur l’app Scalingo…, sans savoir pourquoi ? On soupçonne l'origine du problème, cf image <img src="https://www.geeksleague.be/wp-content/uploads/2010/05/PEBKAC-Preview.png" width="100" height="100">
+
+
 
 ## Pour la suite...
 Nous pouvons imaginer une version améliorée du projet, avec davantage de temps et des sources de données plus complètes. En effet, avec des données plus récentes et une interface plus travaillée, les scores donnés par commune pourraient être plus précis. Une autre possibilité serait l’ajout de filtre afin de se renseigner également sur les communes aux alentours. Par exemple en entrant “ Commune : Montpellier, Distance aux alentours: 30 km”. De cette façon, si nous cherchons à emménager près de Montpellier, savoir qu’une commune aux alentours possède un meilleur score peut être une information intéressante.
