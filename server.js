@@ -214,7 +214,7 @@ app.post('/post', function(request, response) {
   saveCom(note,commune);
 
  let openFile = fs.readFileSync('Data/dbCom.json')
-  let dbCom = JSON.parse(openFile)
+ let dbCom = JSON.parse(openFile)
 
   if (Object.keys(dbCom[0]).includes(commune)){
   response.redirect('/Resultats/'+commune+'/'+codeCP);
@@ -236,7 +236,25 @@ var listeVille = JSON.parse(data);
 var filtered = _.where(listeVille, {nomCommune: request.params.commune});
 
 
-var lst_com = retrieveCom(request.params.commune);
+//var lst_com = retrieveCom(request.params.commune);
+const data2 = fs.readFileSync('Data/dbCom.json');
+var listeCom = JSON.parse(data2);
+//console.log(listeVille);
+//var lst_com = _.where(listeCom, {Object.keys(dbCom[0]): request.params.commune});
+//var objectValue = JSON.parse(string);
+   var lst_com= listeCom[0][request.params.commune]
+   //console.log(lst_com.length);
+   var sum=0;
+   for (let pas = 0; pas < lst_com.length; pas++) {
+   	nb=parseInt(lst_com[pas])
+   	sum=sum+nb;
+	}
+
+var moyenne=sum/lst_com.length
+//console.log(moyenne);
+
+
+//console.log(lst_com);
 
 
 var code=filtered[0]['codeCommune'];
@@ -252,7 +270,8 @@ var bio=filtered[0]['scoreBio'];
     c: int,
     d: gaz,
     e: ed,
-    f:bio
+    f:bio,
+    moy:moyenne
     
 });
   });
