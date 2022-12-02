@@ -3,6 +3,7 @@ let express = require('express');
 var fs = require("fs");
 const request = require('request');
 const alert = require('alert');
+const axios = require('axios');
 
 // func 
 
@@ -236,9 +237,10 @@ app.post('/post', function(request, response) {
 
 app.get('/testAPI', function(request, response){
   const ville = request.params.commune
-  var url = "https://opendatathiziri.osc-fr1.scalingo.io/infos_from_ville/Montpellier/5000/5000"
+  //var url = "https://opendatathiziri.osc-fr1.scalingo.io/infos_from_ville/Montpellier/5000/5000"
+  var url = 'https://villeeco.osc-fr1.scalingo.io/ville-eco/Montpellier'
   var test = axios.get(url).then(res =>{
-      response.send({res})
+      console.log(res.data)
         })
 });
 
