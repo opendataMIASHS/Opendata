@@ -17,11 +17,11 @@ function saveCom(content,target){
   let openFile = fs.readFileSync('Data/dbCom.json')
   let dbCom = JSON.parse(openFile)
 
-  if (target in dbCom.keys()){
-    dbCom[target].push(content)
+  if (Object.keys(dbCom[0]).includes(target)){
+     dbCom[0][target].push(content);
   }
 
-  dbComStr = JSON.stringify(dbCom)
+  dbComStr = JSON.stringify(dbCom);
   
   fs.writeFileSync("Data/dbCom.json", dbComStr)
 
@@ -213,7 +213,16 @@ app.post('/post', function(request, response) {
 
   saveCom(note,commune);
 
+ let openFile = fs.readFileSync('Data/dbCom.json')
+  let dbCom = JSON.parse(openFile)
+
+  if (Object.keys(dbCom[0]).includes(commune)){
   response.redirect('/Resultats/'+commune+'/'+codeCP);
+  }
+  else{
+  	response.send('Nom de ville invalide');
+
+  }
 
 });
 
@@ -225,6 +234,7 @@ const data = fs.readFileSync('Data/marks.json');
 var listeVille = JSON.parse(data);
 //console.log(listeVille);
 var filtered = _.where(listeVille, {nomCommune: request.params.commune});
+
 
 var lst_com = retrieveCom(request.params.commune);
 
