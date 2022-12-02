@@ -178,7 +178,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.get('/', function(request, response) {
-  response.sendFile( __dirname  + '/index.html');
+  response.sendFile( __dirname  + '/indexTest.html');
   //response.render("../index.html");
 });
 
@@ -233,6 +233,14 @@ app.post('/post', function(request, response) {
   }
 
 });
+
+app.get('/apiTierce/:commune'), function(request, response){
+  const ville = request.params.commune
+  var url = "https://opendatathiziri.osc-fr1.scalingo.io/infos_from_ville/"+ville+"/5000/5000"
+  var test = axios.get(url).then(res =>{
+      response.send({res})
+        })
+}
 
 
 
