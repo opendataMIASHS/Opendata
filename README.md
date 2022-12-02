@@ -33,12 +33,12 @@ Par ailleurs, nos sources sont récentes et donc cohérentes avec la problémati
 
 ## Différents routes sont disponibles via notre API (celles qui sont utilisées sont détaillées dans le swagger) :
 
-- / : page d’accueil ; formulaire utilisateur. Le formulaire de recherche, bien que fonctionnel, n’a pas pu être livré à la forme finale désirée (voir incompatibilités Scalingo). Il permet d’afficher nos indicateurs pour une ville rechercher (textuellement seulement)
+- / : page d’accueil ; formulaire utilisateur. Le formulaire de recherche, bien que fonctionnel, n’a pas pu être livré à la forme finale désirée (voir incompatibilités Scalingo). Il permet de demander les nom et code postal d'une ville afin d’afficher ses caractéristiques. L'utilisateur peut aussi y rentrer une note qui sera ajoutée à celles utilisées pour la note moyenne de la ville.
 - /majData : merge les json
 - routes de téléchargements des données : /dlBio : télécharge les données biologiques ; /dlInternet ;
 - /post : récupérer formulaire (récupérer formulaire : ville, code postal : moyenne note
 - /Resultats/:commune/:CP : récupérer données en fonction de la ville et cp, renvoie à l’utilisateur vers la page des résultats
-Grâce à notre route /get/*ville* ; l’équipe de Corentin TEYSSIER peut récupérer nos données
+- **Grâce à notre route /get/*ville* ; l’équipe de Corentin TEYSSIER peut récupérer nos données**
 - /getAll : récupère toutes les données de toutes les villes
 
 ## Git
