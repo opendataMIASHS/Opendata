@@ -1,0 +1,144 @@
+/*------------------------------PIEDS DE PAGE--------------------------*/
+footer {
+  background-color: #2C403D;
+  color: white;
+  text-align: left;
+
+  text-decoration: none;
+  width: 100%;
+  height: 100px;
+  bottom: 0;
+}
+
+footer .gauche {
+  float: right;
+  display: inline-block;
+  color: white;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+/*------------------------------FIN:PIEDS DE PAGE--------------------------*/
+/*------------------------------BARRE DU HAUT--------------------------*/
+/* Add a black background color to the top navigation bar */
+.topnav {
+  background-color: #2C403D;
+  position: sticky; /* Safari */
+  /*top: 0;*/
+}
+/*------------------------------FIN :BARRE DU HAUT--------------------------*/
+/*------------------------------HEADER--------------------------*/
+/* Header/logo Title */
+header {
+  padding: 80px;
+  text-align: center;
+  background: #9EE6DB;
+  color: black;
+}
+
+/* Increase the font size of the heading */
+header h1 {
+  font-size: 40px;
+}
+header h2 {
+font-family: Jazz LET,fantasy;
+font-size: 35px;
+}
+
+
+.im1{
+position: absolute;
+top: 80px;
+right: 75px;
+width : 300px;
+
+}
+.im3{
+position: absolute;
+top: 130px;
+left: 100px;
+width : 300px;
+
+}
+.im2{
+position: absolute;
+top: 50px;
+left: 10px;
+width : 300px;
+}
+/*------------------------------FIN :HEADER--------------------------*/
+/*------------------------------BARRE DU MILIEU--------------------------*/
+
+/* Style the top navigation bar */
+.navbar {
+  overflow: hidden;
+  background-color: #2C403D;
+}
+
+/*------------------------------FIN :BARRE DU MILIEU--------------------------*/
+/*------------------------------CORPS--------------------------*/
+/* Style the body */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background-color: #F4FEFE;
+}
+body h2{
+  text-align: center;
+}
+
+/*#Convaincu {
+  font-family: Jazz LET,fantasy;
+  font-size: 20px;
+  text-align: center;
+
+  color: black;
+}*/
+
+
+
+/* Style the search box inside the navigation bar */
+.container  input[type=text] {
+  float: center;
+  padding: 6px;
+  border: none;
+  margin-top: 8px;
+  font-size: 17px;
+  background: #ddd;
+}
+
+.divCom .fctsearch {
+  float: right;
+}
+
+
+.container  button {
+  text-align: center;  /*float: center;*/
+  padding: 6px 10px;
+  /*margin-top: 8px;
+  margin-right: 16px;*/
+  background: #ddd;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+}
+
+
+/*------------------------------FIN :CORPS--------------------------*/
+
+
+/*------------------------------ACCUEIL---------------------*/
+.rectangleAcc {
+  padding: 1%;
+  background-color: white;
+  width: 80%;
+  border-color: #ddd;
+  border: 4px dashed #ddd;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  margin-bottom: : 3px;
+  font-size: 20px;
+  text-align: justify;
+}
+
+/*------------------------------FIN :ACCUEIL---------------------*/
