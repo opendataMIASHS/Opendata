@@ -225,7 +225,9 @@ app.post('/post', function(request, response) {
   response.redirect('/Resultats/'+commune+'/'+codeCP);
   }
   else{
-  	response.send('Nom de ville invalide');
+    alert('Formulaire invalide !');
+    response.redirect('/');
+  	
 
   }
 
