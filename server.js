@@ -5,6 +5,11 @@ const request = require('request');
 
 // func 
 
+
+function sigmoid(z) {
+  return 1 / (1 + Math.exp(-z/k));
+}
+
 function retrieveCom(target){
   let openFile = fs.readFileSync('Data/dbCom.json')
   let dbCom = JSON.parse(openFile)
@@ -187,7 +192,7 @@ app.get('/dlBio', function(request,response){
           return;
       }
 
-    console.log('Téléchargement terminé !');
+    //console.log('Téléchargement terminé !');
   })
 })
 
@@ -198,7 +203,7 @@ app.get('/dlInternet', function(request,response){
         return;
     }
 
-    console.log('Téléchargement des données Internet terminé !');
+    //console.log('Téléchargement des données Internet terminé !');
 })
 })
 
@@ -251,7 +256,7 @@ var listeCom = JSON.parse(data2);
 	}
 
 var moyenne=sum/lst_com.length
-console.log(moyenne);
+//console.log(moyenne);
 
 
 //console.log(lst_com);
@@ -261,17 +266,17 @@ var code=filtered[0]['codeCommune'];
 var nom=filtered[0]['nomCommune'];
 var int=filtered[0]['scoreInternet'];
 var gaz=filtered[0]['scoreGaz'];
-var ed=filtered[0]['scoreBB']/100;
+var ed=filtered[0]['scoreBB'];
 var bio=filtered[0]['scoreBio'];
 
     response.render("../Resultat.ejs", {
-    a: code,
-    b: nom,
-    c: int,
-    d: gaz,
-    e: ed,
-    f:bio,
-    moy:moyenne
+    a: Math.round(code),
+    b: Math.round(nom),
+    c: Math.round(int),
+    d: Math.round(gaz),
+    e: Math.round(ed/100),
+    f:Math.round(sigmoid(bio*1000000)),
+    moy:Math.round(moyenne)
     
 });
   });
