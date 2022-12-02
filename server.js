@@ -251,7 +251,7 @@ var listeCom = JSON.parse(data2);
 	}
 
 var moyenne=sum/lst_com.length
-//console.log(moyenne);
+console.log(moyenne);
 
 
 //console.log(lst_com);
@@ -261,7 +261,7 @@ var code=filtered[0]['codeCommune'];
 var nom=filtered[0]['nomCommune'];
 var int=filtered[0]['scoreInternet'];
 var gaz=filtered[0]['scoreGaz'];
-var ed=filtered[0]['scoreBB'];
+var ed=filtered[0]['scoreBB']/100;
 var bio=filtered[0]['scoreBio'];
 
     response.render("../Resultat.ejs", {
