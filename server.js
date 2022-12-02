@@ -179,7 +179,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.get('/', function(request, response) {
-  response.sendFile( __dirname  + '/indexTest.html');
+  response.sendFile( __dirname  + '/index.html');
   //response.render("../index.html");
 });
 
