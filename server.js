@@ -2,12 +2,13 @@
 let express = require('express');
 var fs = require("fs");
 const request = require('request');
+const alert = require('alert');
 
 // func 
 
 
 function sigmoid(z) {
-  return 1 / (1 + Math.exp(-z/k));
+  return 1 / (1 + Math.exp(-z/2));
 }
 
 function retrieveCom(target){
@@ -272,13 +273,14 @@ var ed=filtered[0]['scoreBB'];
 var bio=filtered[0]['scoreBio'];
 
     response.render("../Resultat.ejs", {
-    a: Math.round(code),
-    b: Math.round(nom),
-    c: Math.round(int),
-    d: Math.round(gaz),
-    e: Math.round(ed/100),
-    f:Math.round(sigmoid(bio*1000000)),
-    moy:Math.round(moyenne)
+    a: code,
+    b: nom,
+    c: Math.round(int*100)/100,
+    d: Math.round(gaz*100)/100,
+
+    e: Math.round((ed/100) * 100) / 100,
+    f:Math.round(sigmoid(bio*1000000)*100)/100,
+    moy:Math.round(moyenne*100)/100
     
 });
   });
